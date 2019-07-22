@@ -3,6 +3,7 @@
 This fork includes some fixes from other forks, specifically:
 
 * [Timestamp fix](https://github.com/rgpublic/mini_sendmail/commit/2432d0869885b7755a69114cf2ceea3403012da4)
+* [Shared libraries](https://github.com/simonswine/mini_sendmail/commit/fb290c11486bc1e0ddf7f0d935e6435ed2d2c00e)
 
 Fork **with minor modifications** of official mini_sendmail (https://acme.com/software/mini_sendmail/).
 
