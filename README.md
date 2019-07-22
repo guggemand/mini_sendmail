@@ -1,5 +1,9 @@
 # mini_sendmail
 
+This fork includes some fixes from other forks, specifically:
+
+* [Timestamp fix](https://github.com/rgpublic/mini_sendmail/commit/2432d0869885b7755a69114cf2ceea3403012da4)
+
 Fork **with minor modifications** of official mini_sendmail (https://acme.com/software/mini_sendmail/).
 
 Author of this repository is not related to Jef Poskanzer in any way.
