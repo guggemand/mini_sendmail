@@ -1,6 +1,6 @@
 /* mini_sendmail - accept email on behalf of real sendmail
 **
-** Copyright © 1999 by Jef Poskanzer <jef@mail.acme.com>.
+** Copyright ? 1999 by Jef Poskanzer <jef@mail.acme.com>.
 ** All rights reserved.
 **
 ** Redistribution and use in source and binary forms, with or without
@@ -349,7 +349,7 @@ make_received( char* from, char* username, char* hostname )
 
     t = time( (time_t*) 0 );
     tmP = localtime( &t );
-    (void) strftime( timestamp, sizeof(timestamp), "%a, %d %b %Y %T %Z", tmP );
+    (void) strftime( timestamp, sizeof(timestamp), "%a, %d %b %Y %H:%M:%S %Z", tmP );
     received_size =
 	500 + strlen( from ) + strlen( hostname ) * 2 + strlen( MINI_SENDMAIL_VERSION ) +
 	strlen( timestamp ) + strlen( username );
