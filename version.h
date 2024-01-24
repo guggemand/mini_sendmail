@@ -3,6 +3,6 @@
 #ifndef _VERSION_H_
 #define _VERSION_H_
 
-#define MINI_SENDMAIL_VERSION "mini_sendmail/1.4.0"
+#define MINI_SENDMAIL_VERSION "mini_sendmail/1.4.1-guggemand"
 
 #endif /* _VERSION_H_ */
