@@ -107,6 +107,7 @@ main( int argc, char** argv )
     char from[1000];
     int status;
     char buf[2000];
+    struct hostent* lh;
 
     /* Parse args. */
     argv0 = argv[0];
@@ -166,12 +167,15 @@ main( int argc, char** argv )
 
     if ( gethostname( hostname, sizeof(hostname) - 1 ) < 0 )
 	show_error( "gethostname" );
+    lh = gethostbyname(hostname);
+    if (!lh)
+        herror("gethostbyname");
 
     if ( fake_from == (char*) 0 )
-	(void) snprintf( from, sizeof(from), "%s@%s", username, hostname );
+	(void) snprintf( from, sizeof(from), "%s@%s", username, lh->h_name );
     else
 	if ( strchr( fake_from, '@' ) == (char*) 0 )
-	    (void) snprintf( from, sizeof(from), "%s@%s", fake_from, hostname );
+	    (void) snprintf( from, sizeof(from), "%s@%s", fake_from, lh->h_name );
 	else
 	    (void) snprintf( from, sizeof(from), "%s", fake_from );
 
@@ -183,7 +187,7 @@ main( int argc, char** argv )
 
     message = slurp_message();
 #ifdef DO_RECEIVED
-    received = make_received( from, username, hostname );
+    received = make_received( from, username, lh->h_name );
 #endif /* DO_RECEIVED */
 
     (void) signal( SIGALRM, sigcatch );
@@ -211,7 +215,7 @@ main( int argc, char** argv )
 	exit( 1 );
 	}
 
-    (void) snprintf( buf, sizeof(buf), "HELO %s", hostname );
+    (void) snprintf( buf, sizeof(buf), "HELO %s", lh->h_name );
     send_command( buf );
     status = read_response();
     if ( status != 250 )
